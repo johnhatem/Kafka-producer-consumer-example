@@ -12,13 +12,24 @@
 	<artifactId>kafka-producer-consumer</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>kafka-producer-consumer</name>
-	<description>Demo project for Spring Boot</description>
+	<description>A Spring boot Kafka Producer and Consumer project</description>
 	<url/>
 	<licenses>
 		<license/>
 	</licenses>
 	<developers>
-		<developer/>
+		<developer>
+			<id>John</id>
+			<name>John</name>
+			<email></email>
+			<url></url>
+			<organization></organization>
+			<organizationUrl></organizationUrl>
+			<roles>
+				<role>developer</role>
+			</roles>
+			<timezone>GMT</timezone>
+		</developer>
 	</developers>
 	<scm>
 		<connection/>
@@ -28,6 +39,7 @@
 	</scm>
 	<properties>
 		<java.version>21</java.version>
+		<maven-surefire-plugin.version>3.3.1</maven-surefire-plugin.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -35,15 +47,23 @@
 			<artifactId>spring-boot-starter</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.kafka</groupId>
 			<artifactId>spring-kafka</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
 		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -52,6 +72,12 @@
 		<dependency>
 			<groupId>org.springframework.kafka</groupId>
 			<artifactId>spring-kafka-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.awaitility</groupId>
+			<artifactId>awaitility</artifactId>
+			<version>4.2.2</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
@@ -70,6 +96,15 @@
 					</excludes>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${maven-surefire-plugin.version}</version>
+				<configuration>
+					<argLine>-XX:+EnableDynamicAgentLoading</argLine>
+				</configuration>
+			</plugin>
+
 		</plugins>
 	</build>
 

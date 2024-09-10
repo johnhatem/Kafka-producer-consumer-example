@@ -1,0 +1,5 @@
+app:
+  kafka:
+    bootstrap-servers: ${spring.embedded.kafka.brokers}
+    event-dispatched-topic: event.dispatched
+    event-created-topic: event.created

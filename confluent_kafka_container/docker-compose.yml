@@ -54,4 +54,5 @@ services:
       bash -c 'echo Waiting for Kafka to be ready... &&
                cub kafka-ready -b kafka:29092 1 30 &&
                kafka-topics --create --topic event.created --partitions 1 --replication-factor 1 --if-not-exists --bootstrap-server kafka:29092  &&
+               kafka-topics --create --topic event.dispatched --partitions 1 --replication-factor 1 --if-not-exists --bootstrap-server kafka:29092 &&
                kafka-console-producer --bootstrap-server kafka:29092 --property parse.key=false -topic event.created < /data/events.txt'

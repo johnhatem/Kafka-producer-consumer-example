@@ -1,0 +1,33 @@
+server:
+  port: 8080
+
+management:
+  endpoint:
+    health:
+      enabled: true
+      show-components: always
+      show-details: never
+    info.enabled: true
+    metrics.enabled: true
+    prometheus.enabled: true
+#    caches.enabled: true
+  endpoints:
+    enabled-by-default: false
+    web:
+      exposure.include: info,health,metrics,prometheus
+  prometheus:
+    metrics:
+      export:
+        enabled: true
+
+
+app:
+  kafka:
+    bootstrap-servers: localhost:9092
+    event-dispatched-topic: event.dispatched
+    event-created-topic: event.created
+
+logging:
+  level:
+    org.apache.kafka.*: ERROR
+
